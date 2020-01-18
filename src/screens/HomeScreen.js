@@ -1,25 +1,14 @@
 import React from 'react'
-import { Text,View,Button,StyleSheet } from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
 
-const HomeScreen = ({navigation}) => {
-	return (
-		<View>
-			<Text style = {styles.titleStyle}>Expense Manager</Text>
-			<Text>Tap tyhe following buttons to go to appropriate section </Text>
-			<Button
-				title = 'Add Bills'
-				onPress = {() => navigation.navigate('AddBill')}
-			/>
-			<Button
-				title = 'View Bills'
-				onPress = {() => navigation.navigate('ViewBill')}
-			/>
-		</View>
-		)
+const HomeScreen = () => {
+    return (
+        <View>
+            <Text>Home Screen</Text>
+        </View>
+    )
 }
-const styles = StyleSheet.create({
-	titleStyle:{
-		fontSize : 30
-	}
-})
+
+const styles = StyleSheet.create({})
+
 export default HomeScreen
