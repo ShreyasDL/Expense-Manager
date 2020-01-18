@@ -1,14 +1,22 @@
-import { createAppContainer } from 'react-navigation-stack'
-import { createStackNavigator } from 'react-navigation'
-import HomeScreen from './src/screens/HomeScreen'
+import React from 'react'
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import IndexScreen from './src/screens/IndexScreen'
+import { Provider }  from './src/context/ExpenseContext'
+import AddExpenseScreen from './src/screens/AddExpenseScreen'
 
 const navigator = createStackNavigator({
-    Home : HomeScreen
+    Index : IndexScreen,
+    Add : AddExpenseScreen
 },{
-    initialRouteName : 'Home',
+    initialRouteName : 'Index',
     defaultNavigationOptions : {
-        title : 'Demo'
+        title : 'Expense Manager'
     }
 })
 
-export default createAppContainer(navigator)
+const App = createAppContainer(navigator)
+
+export default () => {
+    return <Provider><App /></Provider>
+}
