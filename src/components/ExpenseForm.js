@@ -2,8 +2,8 @@ import React, { useState} from 'react'
 import { Text, TextInput, View, StyleSheet, Button } from 'react-native'
 
 const ExpenseForm = ( { onSubmit , initialValues}) => {
-    const [amount, setAmount] = useState(initialValues)
-    const [purpose, setPurpose] = useState(initialValues)
+    const [amount, setAmount] = useState(initialValues.amount)
+    const [purpose, setPurpose] = useState(initialValues.purpose)
     return (
         <View>
             <Text style = { styles.label } >Add Amount : </Text>
@@ -11,14 +11,16 @@ const ExpenseForm = ( { onSubmit , initialValues}) => {
                 style = { styles.input } 
                 autoCapitalize = 'none'
                 autoCorrect = { false }
-                value = { initialValues.amount }
+                value = { amount }
+                onChangeText = { (newAmount) => setAmount(newAmount) }
             />
             <Text style = { styles.label } >Add Purpose : </Text>
             <TextInput 
                 style = { styles.input } 
                 autoCapitalize = 'none'
                 autoCorrect = { false }
-                value = { initialValues.purpose }
+                value = { purpose }
+                onChangeText = { (newPurpose) => setPurpose(newPurpose) }
             />
             <Button 
                 title = 'Save'

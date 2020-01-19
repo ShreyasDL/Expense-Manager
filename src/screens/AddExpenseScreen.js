@@ -4,14 +4,12 @@ import { Context }  from '../context/ExpenseContext'
 
 const AddExpenseScreen = ({ navigation }) => {
     const { addExpense } = useContext(Context)
-    return (
-        <ExpenseForm
+    return <ExpenseForm
             onSubmit ={ (amount, purpose) => { 
                 addExpense(amount,purpose, () => navigation.navigate('Index'))
                 }
             }
         />
-    )
 }
 
 export default AddExpenseScreen

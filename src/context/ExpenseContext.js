@@ -2,6 +2,8 @@ import createDataContext from './createDataContext'
 
 const expenseReducer = (state,action) => {
     switch(action.type) {
+        case 'delete_expense' :
+            return state.filter( (expense) => expense.id != action.payload.id)
         case 'add_expense' :
             return [
                 ...state ,
@@ -19,14 +21,20 @@ const expenseReducer = (state,action) => {
 const addExpense = (dispatch) => {
     return (amount, purpose, callback) => {
         dispatch({ type : 'add_expense' , payload : { amount, purpose }})
-    }
-    if (callback) {
-        callback()
+        if (callback) {
+            callback()
+        }
     }
 
 }
 
+const deleteExpense = (dispatch) => {
+    return (id) => {
+        dispatch({ type : 'delete_expense' , payload : {id}})
+    }
+}
+
 export const { Context, Provider} = createDataContext(
-    expenseReducer,{ addExpense },[]
+    expenseReducer,{ addExpense, deleteExpense },[]
 )
 
