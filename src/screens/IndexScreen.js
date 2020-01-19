@@ -3,6 +3,7 @@ import { Text, View, StyleSheet,TouchableOpacity, FlatList } from 'react-native'
 import { AntDesign } from '@expo/vector-icons'
 import { Context } from '../context/ExpenseContext'
 
+
 const IndexScreen = ({ navigation }) => {
     const { state, deleteExpense } = useContext(Context)
     
@@ -13,12 +14,16 @@ const IndexScreen = ({ navigation }) => {
                 keyExtractor = { (expense) => expense.purpose + Math.floor(Math.random()*9999) }
                 renderItem = { ({item}) => {
                     return (
-                        <View style = { styles.row }>
-                            <Text style = {styles.text}>{item.purpose}</Text>
-                            <TouchableOpacity onPress = { () => deleteExpense(item.id) }>
-                                <AntDesign name = 'delete' style = { styles.icon }/>
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity onPress = { () => navigation.navigate('Show',{id : item.id})}>
+                            <View style = { styles.row }>
+                            
+                                <Text style = {styles.text}>{item.purpose}</Text>
+                            
+                                <TouchableOpacity onPress = { () => deleteExpense(item.id) }>
+                                    <AntDesign name = 'delete' style = { styles.icon }/>
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                         )
                 }}
             />
